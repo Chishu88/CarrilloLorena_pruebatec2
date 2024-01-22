@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+/**
+ * Citizen entity. Includes all its attributes.
+ * 
+ */
+
 @Entity
 public class Citizen implements Serializable{
     

@@ -13,7 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/** 
+     * This servlet handles HTTP POST request, tipically used for form submissions.
+     *  It retrieves parameters the form, creates a Citizen instance, sets its values,
+     *  and then calls the createCitizien method in the Controller to
+     * handle business logic.
+     */
+   
 @WebServlet(name = "CitizenSv", urlPatterns = {"/CitizenSv"})
 public class CitizenSv extends HttpServlet {
 

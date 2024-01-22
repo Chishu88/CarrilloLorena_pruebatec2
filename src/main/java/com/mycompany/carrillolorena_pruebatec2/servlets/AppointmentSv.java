@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "AppointmentSv", urlPatterns = {"/AppointmentSv"})
 public class AppointmentSv extends HttpServlet {
 
+    // Controller instance to interact with the business logic
     private Controller controller = new Controller();
  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -28,31 +29,37 @@ public class AppointmentSv extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+/**
+     * This servlet handles HTTP POST requests, typically used for form submissions.
+     * It retrieves parameters from the form, interacts with a Controller to handle business logic, 
+     * and redirects to the main page (index.jsp). If the citizen is not found, 
+     * it sets an error message attribute for handling in the frontend.
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-       
-       String dni = request.getParameter("dni");
+       // Retrieve parameters from the form submission
+    String dni = request.getParameter("dni");
     String description = request.getParameter("description");
     LocalDate date = LocalDate.parse(request.getParameter("date"));
     String status = request.getParameter("status");
 
-    // Obtener el ciudadano por DNI
+    // Obtain the citizen by their DNI (identification number)
     Citizen citizen = controller.getCitizenByDni(dni);
 
     if (citizen != null) {
-        // Crear nuevo turno y asignar al ciudadano
+        // Create a new appointment and assign it to the citizen
         Appointment appointment = new Appointment(date, description, status, citizen);
         controller.createAppointment(appointment);
 
-        // Redirigir a la página principal
+        // Redirect to the main page (index.jsp) after successful appointment creation
         response.sendRedirect("index.jsp");
     } else {
-        // Ciudadano no encontrado, manejar la situación según tus necesidades
+        // Handle the case where the citizen is not found
+        // Set an error message attribute for display in the frontend
         request.setAttribute("errorMessage", "Ciudadano no encontrado");
-        // Puedes redirigir a una página de error o mostrar el mensaje en la página principal
+        // You can redirect to an error page or display the message on the main page
         request.getRequestDispatcher("index.jsp").forward(request, response);
        }
     }

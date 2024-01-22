@@ -13,7 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+     * This servlet handles HTTP GET requests to retrieve the complete list of appointments from the controller and sets it as an attribute in the request.
+     * It then forwards the request to the index.jsp page.
+     * Additionally, it has code for filtering appointments based on a date parameter, similar to the FilterAppointmentsSv servlet.
+     * 
+     */
 @WebServlet(name = "ListAppointmentsSv", urlPatterns = {"/ListAppointmentsSv"})
 public class ListAppointmentsSv extends HttpServlet {
 

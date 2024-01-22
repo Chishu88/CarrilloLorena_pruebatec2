@@ -14,7 +14,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+/**
+     * This servlet handles HTTP GET requests to filter appointments based on date and status parameters.
+     * It retrieves the complete list of appointments from the controller,
+     * filters them based on the provided date and status, and then sets the filtered appointments as an attribute in the request.
+     * Finally, it forwards the request to the index.jsp page.
+     */
 @WebServlet(name = "FilterAppointmentsSv", urlPatterns = {"/FilterAppointmentsSv"})
 public class FilterAppointmentsSv extends HttpServlet {
 
@@ -31,30 +36,6 @@ public class FilterAppointmentsSv extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        // Obtener la lista completa de citas desde el controlador
-    /*List<Appointment> allAppointments = controller.getAppointment();
-
-    // Verificar si se proporcionó una fecha en los parámetros de la solicitud
-    String dateParameter = request.getParameter("date");
-    LocalDate date = null;
-
-    if (dateParameter != null && !dateParameter.isEmpty()) {
-        date = LocalDate.parse(dateParameter);
-    }
-
-    final LocalDate finalDate = date;
-
-    // Filtrar las citas por fecha usando streams
-    List<Appointment> filteredAppointments = allAppointments.stream()
-            .filter(appointment -> (finalDate == null || appointment.getDate().isEqual(finalDate)))
-            .collect(Collectors.toList());
-
-    // Establecer las citas filtradas como atributo en la solicitud
-    request.setAttribute("filteredAppointments", filteredAppointments);
-
-    // Redirigir a la página index.jsp
-    request.getRequestDispatcher("index.jsp").forward(request, response);*/
-    
     // Obtener la lista completa de citas desde el controlador
     List<Appointment> allAppointments = controller.getAppointment();
 
