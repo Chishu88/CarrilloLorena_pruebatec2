@@ -1,12 +1,12 @@
 # CarrilloLorena_pruebatec2
 
-Turn Management Application
+## Turn Management Application
 This is a simple Java web application for managing turns, developed as a test project to assess knowledge in Java, Java Web, JPA, and functional programming. The application allows users to perform CRUD operations on turns, with an emphasis on effective interaction with the backend, user interface, and database.
 
-Case Description
+*Case Description*
 A government entity requires the development of a turn management application. The application should store turns for different procedures and citizens assigned to them in a database. Turns are assigned based on arrival order and can have one of two states: "Waiting" or "Attended."
 
-Operations
+*Operations*
 Add a New Turn:
 
 Users can input information about a new turn, including number, date, and description of the procedure.
@@ -26,7 +26,7 @@ Functional Programming: Utilize functions lambda, optionals, utils, or streams a
 Project Structure
 The project is structured with Maven and includes the following components:
 
-Entities:
+*Entities:*
 
 Citizen: Represents information about a citizen.
 Appointment: Represents information about a turn.
